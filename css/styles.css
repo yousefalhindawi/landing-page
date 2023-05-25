@@ -64,30 +64,7 @@ section {
 
 /* ---- Module Rules ---- */
 
-/* Navigation Styles*/
-.navbar__menu ul {
-  padding-left: 0;
-  margin: 0;
-  text-align: right;
-}
 
-.navbar__menu li {
-  display: inline-block;
-}
-
-.navbar__menu .menu__link {
-  display: block;
-  padding: 1em;
-  font-weight: bold;
-  text-decoration: none;
-  color: #000;
-}
-
-.navbar__menu .menu__link:hover {
-  background: #061641;
-  color: #fff !important;
-  transition: ease 0.3s all;
-}
 
 /* Header Styles */
 .page__header {
@@ -116,10 +93,15 @@ section {
   text-align: left;
 }
 
-@media only screen and (min-width: 35em) {
+@media only screen and (min-width: 1024px) {
   .landing__container {
     max-width: 50em;
     padding: 4em;
+  }
+  .navbar__menu .menu__link:hover {
+    background: #061641;
+    color: #fff !important;
+    transition: ease 0.3s all;
   }
 }
 
@@ -266,15 +248,24 @@ section.section-active .landing__container::after {
   color: #555;
 }
 
+.navbar__menu .menu__link {
+  display: block;
+  padding: 0.5em;
+  font-weight: bold;
+  text-decoration: none;
+  color: #000;
+  font-size: xx-small;
+}
 /* Responsive styles */
-@media screen and (max-width: 768px) {
-  .navbar__menu {
-    flex-direction: column;
+@media screen and (min-width: 767px) {
+  .navbar__menu .menu__link {
+    padding: 1em;
+    font-size: 1em;
   }
-
-  #navbar__list li {
-    display: block;
-    margin: 10px 0;
+}
+@media screen and (min-width: 425px) {
+  .navbar__menu .menu__link {
+    font-size: small;
   }
 }
 
