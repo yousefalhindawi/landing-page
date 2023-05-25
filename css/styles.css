@@ -84,8 +84,8 @@ section {
 }
 
 .navbar__menu .menu__link:hover {
-  background: #333;
-  color: #fff;
+  background: #061641;
+  color: #fff !important;
   transition: ease 0.3s all;
 }
 
@@ -223,6 +223,9 @@ section.section-active .landing__container::after {
   animation: rotate 5s linear 0s infinite forwards reverse;
 }
 
+.active{
+  background-color: #cccc11;
+}
 /* Section Active Styles Keyframe Animations */
 @keyframes rotate {
   from {

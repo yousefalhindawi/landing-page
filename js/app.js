@@ -42,6 +42,18 @@ const isBelowFold = () => {
   return window.scrollY > window.innerHeight;
 };
 
+// Helper function to highlight the active menu item
+function highlightActiveMenuItem(activeSectionId) {
+  const navItems = document.querySelectorAll(".menu__link");
+
+  navItems.forEach((item) => {
+    item.classList.remove("active");
+
+    if (item.getAttribute("href") === `#${activeSectionId}`) {
+      item.classList.add("active");
+    }
+  });
+}
 // Debounce function to limit the rate of function execution
 const debounce = (func, delay) => {
   let timeoutId;
@@ -90,7 +102,7 @@ const buildNavMenu = () => {
     const sectionId = section.getAttribute("id");
     const sectionName = section.getAttribute("data-nav");
 
-    listItem.innerHTML = `<a href="#${sectionId}">${sectionName}</a>`;
+    listItem.innerHTML = `<a class="menu__link" href="#${sectionId}">${sectionName}</a>`;
     fragment.appendChild(listItem);
   });
 
@@ -99,13 +111,23 @@ const buildNavMenu = () => {
 
 // Add class 'active' to section when near top of viewport
 const setActiveSection = throttle(() => {
+  let activeSection = sections[0];
+  let minDistance = Infinity;
+
   sections.forEach((section) => {
-    if (isInViewport(section)) {
-      section.classList.add("section-active");
-    } else {
-      section.classList.remove("section-active");
+    const distance = Math.abs(section.getBoundingClientRect().top);
+    if (distance < minDistance) {
+      minDistance = distance;
+      activeSection = section;
     }
   });
+
+  sections.forEach((section) => {
+    section.classList.remove("section-active");
+  });
+
+  activeSection.classList.add("section-active");
+  highlightActiveMenuItem(activeSection.id);
   // We can use the for loop if the forEach method is not supported by any browser
   //   for (let i = 0; i < sections.length; i++) {
   //     if (isInViewport(sections[i])) {
@@ -114,7 +136,7 @@ const setActiveSection = throttle(() => {
   //       sections[i].classList.remove("section-active");
   //     }
   //   }
-}, 200); // throttling time (200 milliseconds)
+}, 0); // throttling time (200 milliseconds)
 
 // Scroll to anchor ID using scrollTO event
 // Scroll to the corresponding section when a navigation link is clicked
