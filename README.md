@@ -1,5 +1,5 @@
-# [udacity-frontend-nanodegrees-landing-page](https://yousefalhindawi.github.io/udacity-frontend-nanodegrees-landing-page/)
-Udacity Frontend Nanodegrees - Landing Page
+# [landing-page](https://yousefalhindawi.github.io/landing-page/)
+Landing Page
 ## An overview of the JavaScript Techniques used in this project:
 * Build the navigation menu dynamically.
 * Add the "active" class to a section when it is near the top of the viewport.
